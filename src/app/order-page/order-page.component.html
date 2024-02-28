@@ -1,0 +1,47 @@
+<app-navbar />
+
+<div class="order-main-container">
+  <h1 class="order-txt">Your Order</h1>
+  <table class="order-container" *ngIf="orderItems.length > 0">
+    <tr class="tr1">
+      <td class="td1">Order Id</td>
+      <td>Product Id</td>
+      <td>Order Token</td>
+      <td>Price Paid</td>
+      <td>Qty</td>
+      <td>Ordered On</td>
+      <td>Action</td>
+    </tr>
+    <tr class="tr2" style="color: #707070" *ngFor="let orderItem of orderItems">
+      <td class="td1">{{ orderItem.order_id }}</td>
+      <td>{{ orderItem.product_id }}</td>
+      <td class="token-td">{{ orderItem.order_token }}</td>
+      <td>{{ orderItem.price_paid }}</td>
+      <td>{{ orderItem.qty }}</td>
+      <td>{{ orderItem.created_at }}</td>
+      <td>
+        <button
+          class="btn btn-warning"
+          [routerLink]="['/product/details', orderItem.product_id]"
+          style="color: #fff"
+        >
+          <i class="fas fa-eye"></i> View
+        </button>
+
+        <button
+          class="btn btn-danger"
+          style="background-color: #ff7a5a;"
+          [routerLink]="['/product/review-details', orderItem.product_id]"
+        >
+          <i class="fas fa-pen"></i>Review
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="empty-cart" *ngIf="orderItems.length == 0">
+    <img src="../../assets/empty-cart.png" class="empty-img" alt="" />
+    <h1 class="empty-txt">You Haven't Ordered Anything Yet</h1>
+    <button class="btn btn-success shopNowBtn" routerLink="/">Shop Now</button>
+  </div>
+</div>

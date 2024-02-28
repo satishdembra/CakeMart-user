@@ -1,0 +1,26 @@
+.rating {
+  display: flex;
+  color: gray;
+  padding-top: 5%;
+  align-items: center;
+  font-weight: bold;
+}
+
+.star {
+  font-size: 25px;
+  color: gray;
+  cursor: pointer;
+  margin: 5px;
+  font-weight: normal;
+  padding-left: 5%;
+}
+
+.star:hover {
+  color: green;
+  transform: scale(1.4);
+}
+
+.star:active {
+  color: green;
+  transform: scale(1.4);
+}

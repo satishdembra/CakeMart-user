@@ -1,0 +1,38 @@
+.tick{
+    font-size: 155px;
+    text-align: center; 
+    display: block;
+    margin: 0 auto;
+    color: green;
+}
+.success-container{
+    text-align: center;
+    margin-top: 2%;
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 2.0s infinite;
+}
+.mssg-container{
+  font-size: 25px;
+  color: green;
+  line-height: 20px;
+  text-align: center;
+}
+.continueBtn{
+  color: white;
+  display: block;
+  margin: 0 auto;
+  margin-top: 2%;
+}

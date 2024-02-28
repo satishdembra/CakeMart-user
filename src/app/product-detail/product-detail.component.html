@@ -1,0 +1,129 @@
+<app-navbar />
+<img [src]="product.product_image" class="product-img" />
+
+<div class="product-detail-main-container" style="margin-top: 2%;">
+  <div class="product-container">
+      <!-- <div
+      class="alert alert-success alert-dismissible popAnimate fade show"
+      role="alert"
+      *ngIf="isAddedToCart == true"
+    >
+      <strong>🎉 Hurrah!</strong> Product Added To Cart.
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        style="color: white"
+      ></button>
+    </div> -->
+    <h1 class="product-heading">{{ product.product_title }}</h1>
+    <div class="rating-review">
+      <span class="badge text-bg-success"
+        >{{ product.product_avg_rating }} <i class="fas fa-star"></i>
+      </span>
+      <p class="ratingscount">
+        {{ product.product_rating_count }} Ratings &
+        {{ product.product_review_count }} Reviews
+      </p>
+    </div>
+    <div class="price-container">
+      <p class="price-txt">
+        Price:
+        <span class="currency"> {{ product.product_currency }}</span>
+        <span class="underline-price">{{ product.product_old_price }}</span>
+        <span class="actual-price">{{ product.product_new_lesser_price }}</span>
+      </p>
+    </div>
+
+    <div class="description-container">
+      <h1 class="desc-heading">Description:</h1>
+      <p class="desc-text">
+        {{ product.product_desc }}
+      </p>
+    </div>
+
+    <button type="button" class="btn btn-warning qtyBtn" style="background-color: #ff7a5a;" (click)="decrement()">
+      -
+    </button>
+    <input type="text" min="1" max="10" [(ngModel)]="quantity" />
+    <button type="button" class="btn btn-warning qtyBtn"  style="background-color: #ff7a5a;" (click)="increment()">
+      +
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-warning addToCartBtn"
+      (click)="addToCart()"
+      style="background-color: #ff7a5a;"
+      *ngIf="isAddedToCart == false"
+    >
+      <i class="fas fa-shopping-cart"></i>
+      ADD TO CART
+    </button>
+
+    <button
+      *ngIf="isAddedToCart == true"
+      type="button"
+      class="btn btn-warning addToCartBtn"
+      routerLink="/cart/getAllCartItems"
+    >
+      <i class="fas fa-shopping-cart"></i>
+      GO TO CART
+    </button>
+
+    <div class="ratings-container">
+      <h1 class="ratings-heading">Ratings & Reviews</h1>
+      <p class="ratings-value">
+        {{ product.product_avg_rating }} <i class="fas fa-star starIcon"></i>
+      </p>
+      <p class="ratingscount1">
+        {{ product.product_rating_count }} Ratings &
+        {{ product.product_review_count }} Reviews
+      </p>
+    </div>
+
+    <!-- Self comment -->
+
+    <!-- <div class="reviews-container">
+      <div class="reviewFirst">
+        <span class="badge text-bg-success"
+          >5 <i class="fas fa-star"></i>
+        </span>
+        <div class="commentCRUDOptions">
+          <i class="fas fa-edit"></i>
+          <i class="fas fa-trash"></i>
+        </div>
+      </div>
+      <div class="name-container">
+        <i> <p>by you</p></i>
+        <i><p>Apr,2018</p> </i>
+      </div>
+
+      <p class="comment-txt">
+        Great Product to go for at this price range. Would highly recommend
+        buying the same.
+      </p>
+    </div> -->
+
+    <!-- Others comment -->
+
+    <div class="reviews-container" *ngFor="let comment of comments">
+      <span class="badge text-bg-success"
+        >{{ comment.number_star }}<i class="fas fa-star"></i>
+      </span>
+      <div class="name-container">
+        <i>
+          <p>by {{ comment.customer_name }}</p></i
+        >
+        <i
+          ><p>{{ comment.created_at_month }}, {{ comment.created_at_year }}</p>
+        </i>
+      </div>
+
+      <p class="comment-txt">
+        {{ comment.rating_review_comment }}
+      </p>
+    </div>
+  </div>
+</div>

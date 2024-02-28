@@ -1,0 +1,80 @@
+<app-navbar />
+
+<img [src]="product.product_image" class="product-img" />
+
+<div class="product-detail-main-container" style="margin-top: 2%">
+  <div class="product-container">
+    <h1 class="product-heading">{{ product.product_title }}</h1>
+    <div class="rating-review">
+      <span class="badge text-bg-success"
+        >{{ product.product_avg_rating }} <i class="fas fa-star"></i>
+      </span>
+      <p class="ratingscount">
+        {{ product.product_rating_count }} Ratings &
+        {{ product.product_review_count }} Reviews
+      </p>
+    </div>
+    <div class="price-container">
+      <p class="price-txt">
+        Price:
+        <span class="currency"> {{ product.product_currency }}</span>
+        <span class="underline-price">{{ product.product_old_price }}</span>
+        <span class="actual-price">{{ product.product_new_lesser_price }}</span>
+      </p>
+    </div>
+
+    <div class="description-container">
+      <h1 class="desc-heading">Description:</h1>
+      <p class="desc-text">
+        {{ product.product_desc }}
+      </p>
+    </div>
+    <div class="ratings-container">
+      <h1 class="ratings-heading">Ratings & Reviews</h1>
+      <p class="ratings-value">
+        {{ product.product_avg_rating }} <i class="fas fa-star starIcon"></i>
+      </p>
+      <p class="ratingscount1">
+        {{ product.product_rating_count }} Ratings &
+        {{ product.product_review_count }} Reviews
+      </p>
+    </div>
+
+    <div class="custom-review-container">
+      <h1 class="ratings-heading">Add Rating & Review</h1>
+
+      <app-star-rating
+        (ratingSelected)="handleRatingSelected($event, product.product_id)"
+      ></app-star-rating>
+
+      <div class="review-container">
+        <p class="review-txt">Give Review</p>
+        <textarea
+          [(ngModel)]="reviewText"
+          placeholder="Write your review here..."
+          class="review-textarea"
+        ></textarea>
+      </div>
+      <button
+        class="btn btn-success reviewBtn"
+        (click)="addReview(product.product_id)"
+      >
+        Add Review
+      </button>
+    </div>
+    <div
+      class="alert alert-success alert-dismissible popAnimate fade show"
+      role="alert"
+      *ngIf="isAddedReview == true"
+    >
+      <strong>Rating & Review Added Successfully</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        style="color: white"
+      ></button>
+    </div>
+  </div>
+</div>

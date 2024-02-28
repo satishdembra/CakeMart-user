@@ -1,0 +1,190 @@
+<app-navbar />
+<div class="product-heading-container">
+  <input
+    class="input-grey-rounded"
+    type="text"
+    placeholder="Search Product By Name, Description..."
+    [(ngModel)]="filterString1"
+  />
+</div>
+<div class="product-catalog-container" *ngIf="isLoaded">
+  <div
+    class="product-card-container"
+    *ngFor="let product of products | searchPipe1 : filterString1"
+  >
+    <h1
+      class="product-tag"
+      style="background-color: #ff7a5a"
+      *ngIf="product.product_avg_rating > 2"
+    >
+      <i class="fas fa-fire"></i>
+      Popular
+    </h1>
+
+    <h1
+      class="product-tag"
+      style="background-color: green"
+      *ngIf="product.product_avg_rating <= 2"
+    >
+      <i class="fas fa-check-circle"></i> Trusted
+    </h1>
+    <img [src]="product.product_image" class="product-img" />
+    <h1 class="product-title">{{ product.product_title }}</h1>
+    <div class="rating-review">
+      <span class="badge text-bg-success"
+        >{{ product.product_avg_rating }} <i class="fas fa-star"></i>
+      </span>
+      <p class="ratingscount">
+        {{ product.product_rating_count }} Ratings &
+        {{ product.product_review_count }} Reviews
+      </p>
+    </div>
+
+    <div class="price-container">
+      <p class="price-txt">
+        Price:
+        <span class="currency">{{ product.product_currency }} </span>
+        <span class="underline-price">{{ product.product_old_price }}</span>
+        <span class="actual-price">{{ product.product_new_lesser_price }}</span>
+      </p>
+    </div>
+    <button
+      type="button"
+      [routerLink]="['/product/details', product.product_id]"
+      class="btn btn-warning"
+      style="background-color: #ff7a5a"
+    >
+      ORDER NOW
+    </button>
+  </div>
+</div>
+
+<!--  Skeleton loading -->
+<!-- <div style="margin-left: 10%; margin-top: 1%">
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+    height: '200px',
+    width: '220px',
+    margin: '10px 2%',
+    borderRadius: '5px', 
+  }"
+    appearance="circle"
+  ></ngx-skeleton-loader>
+</div> -->
+
+<div style="margin-left: 10%; margin-top: 2%">
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{
+      backgroundColor: '	#E0E0E0',
+      height: '140px',
+      width: '220px',
+      margin: '0 2%',
+      borderRadius: '0',
+      zIndex: '8888'
+    }"
+    appearance="circle"
+  ></ngx-skeleton-loader>
+
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'#E8E8E8', 
+    width: '220px',
+    margin: '0 2%',
+    borderRadius: '0', 
+  }"
+    appearance="line"
+  ></ngx-skeleton-loader>
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+    backgroundColor:'#E8E8E8', 
+    width: '220px',
+    margin: '0 2%',
+    borderRadius: '0', 
+  }"
+    appearance="line"
+  ></ngx-skeleton-loader>
+</div>
+
+<div style="margin-left: 10%; margin-top: 2.5%">
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'	#E0E0E0',
+    height: '140px',
+    width: '220px',
+    margin: '10px 2%',
+    borderRadius: '0', 
+  }"
+    appearance="circle"
+  ></ngx-skeleton-loader>
+
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'#E8E8E8', 
+    width: '220px',
+    margin: '0 2%',
+    borderRadius: '0', 
+  }"
+    appearance="line"
+  ></ngx-skeleton-loader>
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'#E8E8E8', 
+    width: '220px',
+    margin: '0 2%',
+    borderRadius: '0', 
+  }"
+    appearance="line"
+  ></ngx-skeleton-loader>
+</div>
+
+<div style="margin-left: 10%; margin-top: 2.5%">
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'	#E0E0E0',
+    height: '140px',
+    width: '220px',
+    margin: '10px 2%',
+    borderRadius: '0', 
+  }"
+    appearance="circle"
+  ></ngx-skeleton-loader>
+
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'#E8E8E8', 
+    width: '220px',
+    margin: '0 2%',
+    borderRadius: '0', 
+  }"
+    appearance="line"
+  ></ngx-skeleton-loader>
+  <ngx-skeleton-loader
+    *ngIf="!isLoaded"
+    count="4"
+    [theme]="{ 
+      backgroundColor:'#E8E8E8', 
+    width: '220px',
+    margin: '0 2%',
+    borderRadius: '0', 
+  }"
+    appearance="line"
+  ></ngx-skeleton-loader>
+</div>

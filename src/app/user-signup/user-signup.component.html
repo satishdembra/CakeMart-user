@@ -1,0 +1,142 @@
+<div class="signin-main-container">
+  <div class="left-container">
+    <i class="fas fa-home homeIcon" routerLink="/user/home"></i>
+    <h1 class="welcom-bck-txt">Welcome Back</h1>
+    <button class="singInBtn" routerLink="/user/signin">SIGN IN</button>
+  </div>
+  <div class="right-container">
+    <h1 class="create-txt">Create Account</h1>
+     <div
+      class="alert alert-success alertMssg"
+      *ngIf="respStatus === 1"
+      role="alert"
+    >
+      {{ respMssg }}
+    </div>
+    <div
+      class="alert alert-danger alertMssg"
+      *ngIf="respStatus === 2"
+      role="alert"
+    >
+      {{ respMssg }}
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <div>
+        <label for="imageUrl"></label>
+        <input
+          type="text"
+          id="imageUrl"
+          formControlName="imageUrl"
+          placeholder="Profile Pic URL:*"
+        />
+      </div>
+
+      <div>
+        <label for="firstName"></label>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="First Name* "
+          formControlName="firstName"
+          required
+        />
+        <div
+          *ngIf="
+            myForm.get('firstName').invalid &&
+            (myForm.get('firstName').dirty || myForm.get('firstName').touched)
+          "
+        >
+          <div
+            *ngIf="myForm.get('firstName').hasError('required')"
+            class="error-mssg"
+          >
+            First name is required.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="lastName"></label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Last Name* "
+          formControlName="lastName"
+          required
+        />
+        <div
+          *ngIf="
+            myForm.get('lastName').invalid &&
+            (myForm.get('lastName').dirty || myForm.get('lastName').touched)
+          "
+        >
+          <div
+            *ngIf="myForm.get('lastName').hasError('required')"
+            class="error-mssg"
+          >
+            Last name is required.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="email"></label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email Address*"
+          formControlName="email"
+          required
+        />
+        <div
+          *ngIf="
+            myForm.get('email').invalid &&
+            (myForm.get('email').dirty || myForm.get('email').touched)
+          "
+        >
+          <div
+            *ngIf="myForm.get('email').hasError('required')"
+            class="error-mssg"
+          >
+            Email address is required.
+          </div>
+          <div *ngIf="myForm.get('email').hasError('email')" class="error-mssg">
+            Invalid email address.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="password"></label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Password*"
+          formControlName="password"
+          required
+        />
+        <div
+          *ngIf="
+            myForm.get('password').invalid &&
+            (myForm.get('password').dirty || myForm.get('password').touched)
+          "
+        >
+          <div
+            *ngIf="myForm.get('password').hasError('required')"
+            class="error-mssg"
+          >
+            Password is required.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submitBtn" style="margin-top: 12%">
+        SIGN UP
+      </button>
+    </form>
+    <p class="already-txt">
+      Already a User? Click
+      <span routerLink="/user/signin">here to login </span>
+    </p>
+  </div>
+</div>

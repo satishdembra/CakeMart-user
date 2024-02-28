@@ -1,0 +1,121 @@
+<div class="navbar-parent-container1" *ngIf="isLoggedIn == true">
+  <div class="btn-auth">
+    <div class="cart-icon">
+      <i class="fas fa-shopping-cart" routerLink="/cart/getAllCartItems"></i>
+      <span
+        class="cart-count"
+        routerLink="/cart/getAllCartItems"
+        *ngIf="cartQty != null"
+        >{{ cartQty }}
+      </span>
+      <span
+        class="cart-count"
+        routerLink="/cart/getAllCartItems"
+        *ngIf="cartQty == null"
+        >0
+      </span>
+      <p class="hello-txt" *ngIf="first_name == null">Hello, User</p>
+      <p class="hello-txt" *ngIf="first_name != null">
+        Hello, {{ first_name }}
+      </p>
+      <img
+        src="https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        class="dp-img"
+        alt=""
+        *ngIf="imageUrl == null"
+      />
+      <img [src]="imageUrl" alt="" class="dp-img" *ngIf="imageUrl != null" />
+    </div>
+  </div>
+  <div class="navbar-main-conatiner">
+    <div class="logo-container">
+      <p class="logo-txt">
+        Cake
+        <span class="logo-second-part"> Mart </span>
+      </p>
+    </div>
+    <div class="nav-links-container">
+      <div class="navItems" routerLink="/user/home">HOME</div>
+      <div class="navItems" routerLink="/user/about">ABOUT</div>
+      <div class="navItems" routerLink="/">PRODUCTS</div>
+      <div class="navItems" routerLink="/order/order-details">ORDERS</div>
+      <div class="navItems" routerLink="/user/contact">CONTACT</div>
+
+      <div class="btn-auth1">
+        <button
+          class="btn btn-danger authBtn"
+          routerLink="/user/signup"
+          (click)="logOut()"
+        >
+          Log Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="navbar-parent-container2" *ngIf="isLoggedIn == false">
+  <div class="navbar-main-conatiner">
+    <div class="logo-container">
+      <p class="logo-txt">
+        Cake
+        <span class="logo-second-part"> Mart </span>
+      </p>
+    </div>
+    <div class="nav-links-container">
+      <div class="navItems" routerLink="/user/home">HOME</div>
+      <div class="navItems" routerLink="/user/about">ABOUT</div>
+      <div class="navItems" routerLink="/">PRODUCTS</div>
+      <div class="navItems" routerLink="/order/order-details">ORDERS</div>
+      <div class="navItems" routerLink="/user/contact">CONTACT</div>
+
+      <div class="btn-auth">
+        <button
+          class="btn btn-success authBtn2"
+          routerLink="/user/signin"
+          style="margin-right: 15px"
+        >
+          Sign In
+        </button>
+        <button class="btn btn-success authBtn2" routerLink="/user/signup">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="home-parent-container">
+  <div class="left">
+    <h1 class="logo-txt logo-txt-head">Cake Mart</h1>
+    <p class="love-txt">Love at first bite</p>
+    <br />
+    <p class="love-txt1">Unleash your sweetest dreams with our heavenly cup cakes!
+  </p>
+
+    <button mat-raised-button class="getBtn" routerLink="/">Get Started</button>
+  </div>
+
+  <div class="right">
+    <img src="../../assets/purple_ai.png" class="main-img" alt="" />
+  </div>
+
+
+ 
+
+
+</div>
+
+<div class="icon-div">
+  <img
+    src="../../assets/pink_cupcake_ai-removebg-preview.png"
+    routerLink="/user/home"
+    class="icon-pink"
+  
+  />
+  <img src="../../assets/purple_ai.png" class="icon-blue" 
+  routerLink="/user/home-cupcake3"/>
+  <img src="../../assets/chocoloate_cupcake.png" class="icon-chocoloate" 
+    routerLink="/user/home-cupcake2"
+  />
+</div>

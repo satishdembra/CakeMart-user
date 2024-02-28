@@ -1,0 +1,40 @@
+import { Component } from '@angular/core';
+import { NavbarService } from '../navbar.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-home-choclate',
+  templateUrl: './home-choclate.component.html',
+  styleUrls: ['./home-choclate.component.css'],
+})
+export class HomeChoclateComponent {
+  constructor(
+    private navbarService: NavbarService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+  isLoggedIn = false;
+  first_name: string | null = '';
+  imageUrl: string | null = '';
+  cartQty: number | undefined = 0;
+  ngOnInit() {
+    localStorage.getItem('isAuthenticated') === 'true'
+      ? (this.isLoggedIn = true)
+      : this.isLoggedIn;
+    this.first_name = localStorage.getItem('first_name');
+    this.imageUrl = localStorage.getItem('profile_pic');
+    if (localStorage.getItem('isAuthenticated') === 'true') {
+      this.navbarService.getCartItemsCount().subscribe((res) => {
+        this.cartQty = res.data.countProductInCart[0].Count;
+      });
+    }
+  }
+
+  logOut() {
+    localStorage.setItem('isAuthenticated', 'false');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('profile_pic');
+    localStorage.removeItem('first_name');
+  }
+  handleClick(imgId: string) {}
+}

@@ -1,0 +1,81 @@
+.order-main-container {
+  margin-top: 10%;
+}
+.order-txt {
+  font-size: 30px;
+  color: #ff7a5a;
+  margin-left: 5%;
+  margin-top: 7%;
+}
+.order-container {
+  margin-left: 5%;
+  margin-top: 1%;
+  width: 90%;
+  border-bottom: 1px solid black;
+}
+tr {
+  border-bottom: 1px solid black;
+}
+
+.td1 {
+  padding-left: 1%;
+}
+td {
+  font-size: 15px;
+  padding: 1%;
+}
+.tr1 {
+  background-color: #ffc8ba;
+  color: #000;
+}
+button {
+  font-size: 13px;
+  height: 10%;
+  padding: 5px 12px;
+  margin-right: 10px;
+  border: 0;
+}
+button:last-child {
+  margin-top: 5%;
+  padding-right: 5px;
+}
+i {
+  padding-right: 5px;
+}
+
+td {
+  width: 200px;
+}
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  border-bottom: 1px solid black;
+  padding: 8px;
+}
+
+.empty-txt {
+  font-size: 25px;
+  text-align: center;
+  color: #d9534f;
+}  
+.empty-img {
+  width: 6%;
+  height: 6%;
+  display: block;
+  margin: 0 auto;
+  padding: 5% 0 1% 0;
+}
+.shopNowBtn {
+  margin: 0 auto;
+  display: block;
+  font-size: 17px;
+  transition: transform 0.4s ease;
+}
+.shopNowBtn:hover {
+  margin: 0 auto;
+  display: block;
+  font-size: 17px;
+  transform: scale(1.1);
+}

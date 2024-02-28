@@ -1,0 +1,78 @@
+<div class="signin-main-container">
+  <div class="left-container">
+    <h1 class="create-txt">Welcome Back</h1>
+    <div
+      class="alert alert-danger alertMssg"
+      *ngIf="respStatus === 1"
+      role="alert"
+    >
+      User email or password incorrect
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <div>
+        <label for="email"></label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Enter Email* "
+          formControlName="email"
+          required
+        />
+        <div
+          *ngIf="
+            myForm.get('email').invalid &&
+            (myForm.get('email').dirty || myForm.get('email').touched)
+          "
+        >
+          <div
+            *ngIf="myForm.get('email').hasError('required')"
+            class="error-mssg"
+          >
+            Email is required.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="Password"></label>
+        <input
+          type="password"
+          id="Password"
+          placeholder="Enter Password* "
+          formControlName="password"
+          required
+        />
+        <div
+          *ngIf="
+            myForm.get('Password').invalid &&
+            (myForm.get('Password').dirty || myForm.get('Password').touched)
+          "
+        >
+          <div
+            *ngIf="myForm.get('Password').hasError('required')"
+            class="error-mssg"
+          >
+            Password is required.
+          </div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="submitBtn"
+        style="margin-top: 0; font-weight: bold"
+      >
+        SIGN IN
+      </button>
+      <p class="already-txt">
+        New To Cake Kart? Click
+        <span routerLink="/user/signup">here to register </span>
+      </p>
+    </form>
+  </div>
+  <div class="right-container">
+    <i class="fas fa-home homeIcon" routerLink="/user/home"></i>
+
+    <h1 class="welcom-bck-txt">NEW USER?</h1>
+    <button class="singInBtn" routerLink="/user/signup">SIGN UP</button>
+  </div>
+</div>

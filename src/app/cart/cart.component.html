@@ -1,0 +1,58 @@
+<app-navbar />
+<div class="cart-main-container" style="margin-top: 4%;">
+  <div class="cart-items-container">
+    <h1 class="my-cart-heading" style="color: #ff7a5a;">MY CART</h1>
+
+    <div class="product-container" *ngFor="let item of cartItems">
+      <div class="left">
+        <img [src]="item.product_image" alt="" class="product-img" />
+        <div class="product-txt">
+          <p class="title">{{ item.product_title }}</p>
+          <p class="price">
+            Price: {{ item.product_currency }}
+            {{ item.product_new_lesser_price }}
+          </p>
+          <p class="price">Qty: {{ item.qty }}</p>
+        </div>
+      </div>
+      <div>
+        <i class="fas fa-trash" (click)="removeFromCart(item.product_id)"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right panel -->
+
+  <div class="right-container" *ngIf="cartItems.length > 0">
+    <h1 class="price-details-txt" style="color:#ff7a5a">Price Details</h1>
+    <p class="price-txt">
+      MRP: -------------- {{ cartItems[0].product_currency }}{{ mrp }}
+    </p>
+    <p class="price-txt">
+      Discount:-------------- {{ cartItems[0].product_currency
+      }}{{ money_saved }}
+    </p>
+    <p class="price-txt">Convenience Fees:-------- FREE</p>
+    <hr />
+    <p class="price-txt">
+      Total Price -------------- {{ cartItems[0].product_currency
+      }}{{ price_to_pay }}
+    </p>
+    <hr />
+    <p class="price-txt">
+      You Saved {{ cartItems[0].product_currency }}{{ money_saved }} in This
+      Order
+    </p>
+    <button class="btn btn-warning payBtn" style="background-color: #ff7a5a;"(click)="pay(price_to_pay)">
+      Proceed To Pay
+    </button>
+    <button class="btn btn-outline-warning payBtn1" style="color: #ff7a5a; border: 1px #ff7a5a solid;"routerLink="/">
+      Back To Shop
+    </button>
+  </div>
+</div>
+<div class="empty-cart" *ngIf="cartItems.length == 0">
+  <img src="../../assets/empty-cart.png" class="empty-img" alt="" />
+  <h1 class="empty-txt">Your Cart is Empty</h1>
+  <button class="btn btn-success shopNowBtn" routerLink="/">Shop Now</button>
+</div>
